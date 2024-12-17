@@ -8,7 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@acme/prettier-config": "workspace:*",
+    "prettier": "catalog:",
     "turbo": "^2.3.3",
     "typescript": "catalog:"
-  }
+  },
+  "prettier": "@acme/prettier-config"
 }

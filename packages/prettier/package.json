@@ -1,15 +1,23 @@
 {
-  "name": "prettier",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "@acme/prettier-config",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
+    "prettier": "^3.4.2"
+  },
   "devDependencies": {
-    "typescript": "~5.6.2"
-  }
+    "@acme/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  },
+  "prettier": "@acme/prettier-config"
 }
