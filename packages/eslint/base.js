@@ -2,7 +2,7 @@
 
 import * as path from "node:path";
 import { includeIgnoreFile } from "@eslint/compat";
-import eslint from "@eslint/js";
+import { default as eslint, default as js } from "@eslint/js";
 import importPlugin from "eslint-plugin-import";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
@@ -48,6 +48,7 @@ export default tseslint.config(
       turbo: turboPlugin,
     },
     extends: [
+      js.configs.recommended,
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
