@@ -1,10 +1,9 @@
-import { Toaster } from "sonner";
-
 import { Button } from "@/components/ui/button";
-import { trpc } from "@/utils/trpc";
+import { Toaster } from "sonner";
+import { api } from "./utils/trpc";
 
 function App() {
-  const greetQuery = trpc.greeting.useQuery();
+  const greetQuery = api.greeting.useQuery();
 
   return (
     <>
