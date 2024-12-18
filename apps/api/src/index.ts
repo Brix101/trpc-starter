@@ -1,8 +1,17 @@
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
-
-import { AppRouter, startServer } from "./server";
+import { appRouter, AppRouter, startServer } from "./server";
+import { createCallerFactory } from "./trpc";
 
 void startServer();
+
+/**
+ * Create a server-side caller for the tRPC API
+ * @example
+ * const trpc = createCaller(createContext);
+ * const res = await trpc.post.all();
+ *       ^? Post[]
+ */
+const createCaller = createCallerFactory(appRouter);
 
 /**
  * Inference helpers for input types
@@ -20,4 +29,5 @@ type RouterInputs = inferRouterInputs<AppRouter>;
  **/
 type RouterOutputs = inferRouterOutputs<AppRouter>;
 
+export { appRouter, createCaller };
 export type { AppRouter, RouterInputs, RouterOutputs };

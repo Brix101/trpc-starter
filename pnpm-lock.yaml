@@ -114,6 +114,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      superjson:
+        specifier: ^2.2.2
+        version: 2.2.2
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*

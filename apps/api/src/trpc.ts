@@ -37,6 +37,12 @@ export const t = initTRPC.context<Context>().create({
 });
 
 /**
+ * Create a server-side caller
+ * @see https://trpc.io/docs/server/server-side-calls
+ */
+export const createCallerFactory = t.createCallerFactory;
+
+/**
  * This is how you create new routers and subrouters in your tRPC API
  * @see https://trpc.io/docs/router
  */
