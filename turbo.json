@@ -38,6 +38,6 @@
       "persistent": true
     }
   },
-  "globalEnv": ["POSTGRES_URL", "AUTH_SECRET", "PORT"],
+  "globalEnv": ["POSTGRES_URL", "AUTH_SECRET", "PORT", "DEV"],
   "globalPassThroughEnv": ["NODE_ENV", "CI", "npm_lifecycle_event"]
 }

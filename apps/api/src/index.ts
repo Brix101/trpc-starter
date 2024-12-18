@@ -1,4 +1,5 @@
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
+
 import { AppRouter, startServer } from "./server";
 
 void startServer();

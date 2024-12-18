@@ -3,6 +3,19 @@
 
 /** @type { PrettierConfig | SortImportsConfig  } */
 const config = {
+  importOrder: [
+    "<TYPES>",
+    "^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "<TYPES>^@acme",
+    "^@acme/(.*)$",
+    "",
+    "<TYPES>^[.|..|~]",
+    "^@/",
+    "^[../]",
+    "^[./]",
+  ],
   plugins: ["@ianvs/prettier-plugin-sort-imports"],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "4.4.0",
