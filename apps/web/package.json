@@ -25,6 +25,7 @@
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
+    "@acme/tsconfig": "workspace:^",
     "@eslint/js": "^9.15.0",
     "@types/node": "catalog:",
     "@types/react": "^18.3.12",
