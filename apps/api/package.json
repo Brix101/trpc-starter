@@ -34,7 +34,6 @@
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
-    "tsup": "^8.3.5",
     "tsx": "^4.19.2",
     "typescript": "catalog:"
   }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import viteLogo from "/vite.svg";
 import reactLogo from "./assets/react.svg";
-import { trpc } from "./utils  /trpc";
+import { trpc } from "./utils/trpc";
 
 function App() {
   const [count, setCount] = useState(0);
