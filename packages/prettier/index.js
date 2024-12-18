@@ -6,6 +6,7 @@ const config = {
   importOrder: [
     "<TYPES>",
     "^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
+    "^(next/(.*)$)|^(next$)",
     "<THIRD_PARTY_MODULES>",
     "",
     "<TYPES>^@acme",
@@ -13,6 +14,7 @@ const config = {
     "",
     "<TYPES>^[.|..|~]",
     "^@/",
+    "^~/",
     "^[../]",
     "^[./]",
   ],

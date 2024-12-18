@@ -2,7 +2,6 @@ import * as trpcExpress from "@trpc/server/adapters/express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
-
 import { createContext, createTrpcRouter, publicProcedure } from "./trpc";
 
 const app = express();
@@ -28,7 +27,7 @@ app.use(
 );
 
 export const startServer = async () => {
-  const port = process.env.PORT || 4000;
+  const port = process.env.PORT || 5000;
 
   const server = app.listen(port, () => {
     console.log(`server started on http://localhost:${port}/api`);
