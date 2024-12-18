@@ -14,7 +14,7 @@ export const appRouter = createTrpcRouter({
 export type AppRouter = typeof appRouter;
 
 app.use(
-  "/trpc",
+  "/api/trpc",
   cors({
     maxAge: 86400,
     credentials: true,
@@ -31,7 +31,7 @@ export const startServer = async () => {
   const port = process.env.PORT || 4000;
 
   const server = app.listen(port, () => {
-    console.log(`server started on http://localhost:${port}/trpc`);
+    console.log(`server started on http://localhost:${port}/api`);
   });
 
   //////////////////////////////////////////////////////////////////////

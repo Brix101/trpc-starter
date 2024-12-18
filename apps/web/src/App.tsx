@@ -1,3 +1,5 @@
+import { Toaster } from "sonner";
+
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/utils/trpc";
 
@@ -11,6 +13,7 @@ function App() {
         {greetQuery.isLoading ? "Loading" : greetQuery.data}
       </p>
       <Button>asdf</Button>
+      <Toaster richColors />
     </>
   );
 }

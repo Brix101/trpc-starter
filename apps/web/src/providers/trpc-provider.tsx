@@ -7,25 +7,23 @@ import superjson from "superjson";
 import { queryClient } from "@/utils/query-client";
 import { trpc } from "@/utils/trpc";
 
-export function TRPCProvider(props: React.PropsWithChildren) {
+export function TRPCReactProvider(props: React.PropsWithChildren) {
   const [trpcClient] = React.useState(() =>
     trpc.createClient({
       links: [
         loggerLink({
           enabled: (opts) =>
-            // eslint-disable-next-line turbo/no-undeclared-env-vars
             (import.meta.env.DEV && typeof window !== "undefined") ||
             (opts.direction === "down" && opts.result instanceof Error),
         }),
         httpBatchLink({
           transformer: superjson,
-          url: "/trpc",
-          // You can pass any HTTP headers you wish here
-          //   async headers() {
-          //     return {
-          //       authorization: getAuthCookie(),
-          //     };
-          //   },
+          url: "/api/trpc",
+          async headers() {
+            const headers = new Headers();
+            headers.set("x-trpc-source", "web-react");
+            return headers;
+          },
         }),
       ],
     }),
