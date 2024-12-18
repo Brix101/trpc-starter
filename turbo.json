@@ -2,15 +2,12 @@
   "$schema": "https://turborepo.org/schema.json",
   "ui": "tui",
   "tasks": {
-    "topo": {
-      "dependsOn": ["^topo"]
-    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".cache/tsbuildinfo.json", "dist/**"]
     },
     "dev": {
-      "dependsOn": ["^dev"],
+      "dependsOn": ["^build"],
       "cache": false,
       "persistent": false
     },
@@ -41,14 +38,6 @@
       "persistent": true
     }
   },
-  "globalEnv": [
-    "POSTGRES_URL",
-    "AUTH_SECRET",
-    "PORT"
-  ],
-  "globalPassThroughEnv": [
-    "NODE_ENV",
-    "CI",
-    "npm_lifecycle_event"
-  ]
+  "globalEnv": ["POSTGRES_URL", "AUTH_SECRET", "PORT"],
+  "globalPassThroughEnv": ["NODE_ENV", "CI", "npm_lifecycle_event"]
 }
