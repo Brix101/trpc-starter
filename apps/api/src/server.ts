@@ -2,7 +2,9 @@ import * as trpcExpress from "@trpc/server/adapters/express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
-import { createContext, createTrpcRouter, publicProcedure } from "./trpc";
+import morgan from "morgan";
+
+import { createTRPCContext, createTrpcRouter, publicProcedure } from "./trpc";
 
 const app = express();
 
@@ -12,22 +14,23 @@ export const appRouter = createTrpcRouter({
 
 export type AppRouter = typeof appRouter;
 
+app.use(morgan("dev"));
 app.use(
   "/api/trpc",
   cors({
     maxAge: 86400,
     credentials: true,
-    origin: "*",
+    origin: "http://localhost:3000",
   }),
   cookieParser(),
   trpcExpress.createExpressMiddleware({
     router: appRouter,
-    createContext,
+    createContext: createTRPCContext,
   }),
 );
 
 export const startServer = async () => {
-  const port = process.env.PORT || 5000;
+  const port = process.env.PORT ?? 5000;
 
   const server = app.listen(port, () => {
     console.log(`server started on http://localhost:${port}/api`);
@@ -38,12 +41,12 @@ export const startServer = async () => {
   const errorTypes = ["unhandledRejection", "uncaughtException"];
 
   errorTypes.forEach((type) => {
-    process.on(type, async (error) => {
+    process.on(type, (error) => {
       try {
         console.error(`process exit due to ${type}`);
         console.error(error);
         process.exit(1);
-      } catch (_) {
+      } catch {
         process.exit(1);
       }
     });

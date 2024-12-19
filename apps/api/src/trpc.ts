@@ -1,16 +1,15 @@
+import type * as trpcExpress from "@trpc/server/adapters/express";
 import { initTRPC } from "@trpc/server";
-import * as trpcExpress from "@trpc/server/adapters/express";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-export const createContext = ({
+export const createTRPCContext = ({
   req,
   res,
 }: trpcExpress.CreateExpressContextOptions) => {
   // TODO pass db here
 
-  const authToken =
-    (req.headers["authorization"] as string | undefined) ?? null;
+  const authToken = req.headers.authorization ?? null;
   // const session = await isomorphicGetSession(opts.headers);
   const session = {
     user: null,
@@ -18,12 +17,12 @@ export const createContext = ({
 
   const source = req.headers["x-trpc-source"] as string | undefined;
 
-  console.log(">>> tRPC Request from", source, "by", session?.user);
+  console.log(">>> tRPC Request from", source, "by", session.user);
 
   return { req, res };
 };
 
-type Context = Awaited<ReturnType<typeof createContext>> & {};
+type Context = Awaited<ReturnType<typeof createTRPCContext>> & {};
 
 export const t = initTRPC.context<Context>().create({
   transformer: superjson,
